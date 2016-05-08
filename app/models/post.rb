@@ -19,6 +19,12 @@ class Post < ActiveRecord::Base
 
   validates_presence_of :content
   validates_presence_of :user
+  
+
+  def self.search(search)
+    where("name LIKE ?", "%#{search}%") 
+    where("content LIKE ?", "%#{search}%")
+  end
 
   auto_html_for :content do
     html_escape

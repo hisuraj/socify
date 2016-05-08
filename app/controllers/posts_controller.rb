@@ -34,6 +34,28 @@ class PostsController < ApplicationController
       format.html { redirect_to root_path }
     end
   end
+  
+  def index
+    @posts = Post.paginate(:all, :order => 'created_at desc', :per_page => 25, :page => params[:page])
+  end
+
+  def search
+    if request.post?
+      redirect_to search_posts_path(:q => params[:search][:query])
+    elsif request.get?
+      unless params[:q].blank?
+        search = Post.title_like_all(params[:q].to_s.split).descend_by_created_at
+        @posts = search.paginate(:per_page => 25, :page => params[:page])
+
+        @query = params[:q]
+
+      end
+
+      #render the Post index.html.erb
+      render 'index'
+
+    end
+  end
 
   private
   def set_post

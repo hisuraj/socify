@@ -19,7 +19,10 @@ class User < ActiveRecord::Base
   mount_uploader :cover, AvatarUploader
 
   validates_presence_of :name
-
+  validates_length_of :email, :minimum => 4, :maximum => 50, :allow_blank => false
+  validates_length_of :email, :minimum => 4, :maximum => 50, :allow_blank => false
+  validates_length_of :phone_number, :minimum => 4, :maximum => 15, :allow_blank => false
+  validates_length_of :dob, :minimum => 4, :maximum => 15, :allow_blank => false
   self.per_page = 10
 
   extend FriendlyId

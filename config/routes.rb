@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  resources :posts, :collection => { :search => [ :post, :get ] }
+  
   resources :posts
   resources :comments, only: [:create, :destroy]
   devise_for :users
@@ -18,7 +20,9 @@ Rails.application.routes.draw do
   unauthenticated :user do
     root 'home#front'
   end
-
+  
+  
+  
   match :follow, to: 'follows#create', as: :follow, via: :post
   match :unfollow, to: 'follows#destroy', as: :unfollow, via: :post
   match :like, to: 'likes#create', as: :like, via: :post
