@@ -10,13 +10,40 @@
         </div>
       <% end %>
       <div class="form-group">
-        <%= f.label :name %>
-        <%= f.text_field :name, class: 'form-control', autofocus: true, placeholder: 'Full name' %>
+        <%= f.label :'First Name' %>
+        <%= f.text_field :name, class: 'form-control', autofocus: true, placeholder: 'First name' %>
       </div>
+      
+      <div class="form-group">
+        <%= f.label :'Middle Name' %>
+        <%= f.text_field :middlename, class: 'form-control', autofocus: true, placeholder: 'Middle name' %>
+      </div>
+        
+      <div class="form-group">
+        <%= f.label :'Last Name' %>
+        <%= f.text_field :lastname, class: 'form-control', autofocus: true, placeholder: 'Last name' %>
+      </div>
+      
       <div class="form-group">
         <%= f.label :email %>
         <%= f.email_field :email, class: 'form-control', placeholder: 'email@example.com' %>
       </div>
+      
+      <div class="form-group">
+        <%= f.label :phone_number %>
+        <%= f.email_field :phone_number, class: 'form-control', placeholder: '1234567890' %>
+      </div>
+      
+      <div class="form-group">
+          <%= f.label :'Date Of Birth' %>
+          <%= f.text_field :dob, placeholder: '2000/01/01', class: 'form-control' %>
+        </div>
+      
+      <div class="form-group">
+          <%= f.label :sex %><br>
+          <%= f.select :sex, options_for_seasons, class: 'form-control', prompt: 'Select One' %>
+      </div>
+        
       <div class="form-group">
         <%= f.label :password %>
         <% if @minimum_password_length %>
