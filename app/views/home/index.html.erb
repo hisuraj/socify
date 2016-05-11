@@ -1,12 +1,18 @@
 <div class="row">
-  
-  <div class="col-lg-3">
-    <%= render 'shared/user_info' %>
-    <div id="friends" class="col-lg-15 well">
+    
+    
+  <div class="col-lg-3 well">
+      <%= render 'shared/user_info' %>
+      <div id="frens" class="col-lg-25 grey">
       <h3>Friends</h3>
-      <%= render(@friends) || render('shared/activity') %>
+      <hr>
+        <%= render(@friends) || render('shared/no_resource') %>
+      </hr>
     </div>
   </div>
+  
+   
+ 
   
   <div id="newsfeed" class="col-lg-6">
     <%= render 'posts/form' %>
